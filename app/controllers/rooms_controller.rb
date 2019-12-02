@@ -5,6 +5,11 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
 
+  def show
+    @room_message = Room Message.new room: @room
+    @room_message = @room.room_message.includes(:user)
+  end
+
   def new
     @room = Room.new
   end
